@@ -419,6 +419,11 @@ namespace GaussianSplatting.Runtime
                 2, 3, 6, 3, 7, 6
             });
 
+            //debug count, stride is 4 bytes, each element is likely a float, m_GpuPosData might contain single dimension array of floating-point numbers.
+            int elementCount = m_GpuPosData.count;
+            int elementStride = m_GpuPosData.stride;
+            UnityEngine.Debug.Log($"m_GpuPosData - Count: {elementCount}, Stride: {elementStride} bytes");
+
             InitSortBuffers(splatCount);
         }
 
@@ -794,6 +799,8 @@ namespace GaussianSplatting.Runtime
             camTr.localRotation = Quaternion.LookRotation(cam.axisZ, cam.axisY);
             camTr.parent = prevParent;
             camTr.localScale = Vector3.one;
+
+
 #if UNITY_EDITOR
             UnityEditor.EditorUtility.SetDirty(camTr);
 #endif
@@ -1206,4 +1213,6 @@ namespace GaussianSplatting.Runtime
 
         public GraphicsBuffer GpuEditDeleted => m_GpuEditDeleted;
     }
+
+    
 }

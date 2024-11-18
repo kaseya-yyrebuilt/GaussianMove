@@ -79,7 +79,7 @@ namespace GaussianSplatting.Runtime
             }
             if (m_Type == Type.CustomMesh && m_CustomMesh != null)
             {
-                //Gizmos.DrawWireMesh(m_CustomMesh); 
+                Gizmos.DrawWireMesh(m_CustomMesh); 
             }
         }
 #endif // #if UNITY_EDITOR
